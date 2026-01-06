@@ -85,15 +85,19 @@ export function Hero() {
                             rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity" 
                 />
                 <div className="relative w-full aspect-square max-w-[24rem] mx-auto rounded-2xl 
-                            overflow-hidden border-4 border-primary/20 shadow-2xl"
+                            overflow-hidden border-4 border-primary/20 shadow-2xl bg-gray-100 dark:bg-gray-800"
                 >
                   <Image
-                    src="/images/profile.png"
+                    src="/images/smart.jpg"
                     alt="AMOUSSOU Joël Sagbo Côme - Développeur Full-Stack"
                     fill
-                    className="object-cover object-[center_20%]"
+                    className="object-cover object-center"
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{
+                      objectPosition: 'center center',
+                      transform: 'scale(1.05)' // Légèrement agrandi pour un meilleur cadrage
+                    }}
                   />
                 </div>
               </div>
