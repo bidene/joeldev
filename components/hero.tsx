@@ -3,8 +3,27 @@
 import { ArrowRight, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useEffect, useState } from "react"
+
+// Icônes pour les compétences
+const skills = [
+  { name: 'HTML', icon: '/images/html-5.png', color: 'bg-orange-500/20' },
+  { name: 'JavaScript', icon: '/images/javascript.png', color: 'bg-yellow-500/20' },
+  { name: 'Node.js', icon: '/images/nodejs.png', color: 'bg-green-500/20' },
+  { name: 'MySQL', icon: '/images/mysql.png', color: 'bg-blue-500/20' }
+]
 
 export function Hero() {
+  const [angle, setAngle] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAngle(prev => (prev + 0.5) % 360);
+    }, 50);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById("contact")
     if (element) {
@@ -78,27 +97,61 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Profile Image */}
+            {/* Profile Image with Orbiting Icons */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end w-full">
-              <div className="relative group w-full max-w-md">
-                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 
-                            rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity" 
-                />
-                <div className="relative w-full aspect-square max-w-[24rem] mx-auto rounded-2xl 
-                            overflow-hidden border-4 border-primary/20 shadow-2xl bg-gray-100 dark:bg-gray-800"
-                >
-                  <Image
-                    src="/images/smart.jpg"
-                    alt="Joël  Développeur Full-Stack"
-                    fill
-                    className="object-cover object-center"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{
-                      objectPosition: 'center center',
-                      transform: 'scale(1.05)' // Légèrement agrandi pour un meilleur cadrage
-                    }}
-                  />
+              <div className="relative group w-full max-w-md h-[24rem]">
+                {/* Icônes en orbite */}
+                {skills.map((skill, index) => {
+                  const baseAngle = (index * Math.PI * 2) / skills.length - Math.PI / 2;
+                  const currentAngle = baseAngle + (angle * Math.PI / 180);
+                  const radius = 10; // Taille de l'orbite en rem
+                  const x = Math.cos(currentAngle) * radius;
+                  const y = Math.sin(currentAngle) * radius;
+                  
+                  return (
+                    <div 
+                      key={skill.name}
+                      className={`absolute top-1/2 left-1/2 w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center 
+                                rounded-full ${skill.color} border-2 border-white/20 shadow-lg backdrop-blur-sm
+                                transition-all duration-1000 group-hover:scale-110 hover:!scale-125 hover:z-10`}
+                      style={{
+                        transform: `translate(calc(-50% + ${x}rem), calc(-50% + ${y}rem))`,
+                        transition: 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                        zIndex: 10,
+                      }}
+                    >
+                      <Image
+                        src={skill.icon}
+                        alt={skill.name}
+                        width={32}
+                        height={32}
+                        className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
+                      />
+                    </div>
+                  );
+                })}
+
+                {/* Photo de profil */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[24rem] aspect-square">
+                  <div className="relative group w-full h-full">
+                    <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 
+                                rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity" 
+                    />
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl bg-gray-100 dark:bg-gray-800">
+                      <Image
+                        src="/images/smart.jpg"
+                        alt="Joël Développeur Full-Stack"
+                        fill
+                        className="object-cover object-center"
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        style={{
+                          objectPosition: 'center center',
+                          transform: 'scale(1.05)'
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
