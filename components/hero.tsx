@@ -89,7 +89,7 @@ export function Hero() {
                 >
                   <Image
                     src="/images/smart.jpg"
-                    alt="AMOUSSOU Joël Sagbo Côme - Développeur Full-Stack"
+                    alt="Joël  Développeur Full-Stack"
                     fill
                     className="object-cover object-center"
                     priority
