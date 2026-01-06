@@ -1,0 +1,113 @@
+"use client"
+
+import { ArrowRight, Download } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
+export function Hero() {
+  const scrollToContact = () => {
+    const element = document.getElementById("contact")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const downloadCV = () => {
+    window.open("/cv.pdf", "_blank")
+  }
+
+  return (
+    <section 
+      id="hero" 
+      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 
+                    bg-primary/10 rounded-full blur-3xl animate-float" 
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 
+                    bg-secondary/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+      </div>
+
+      <div className="container mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold 
+                          mb-4 sm:mb-6 text-balance leading-tight"
+              >
+                Hello 👋 !
+              </h1>
+
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 sm:mb-4">
+                Je suis Joël, développeur Full-Stack.
+              </p>
+
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 
+                         leading-relaxed max-w-xl mx-auto lg:mx-0"
+              >
+                Je conçois des sites web modernes et performants, en alliant design, 
+                performance et logique métier pour des projets fiables, utiles et durables.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
+                <Button 
+                  size="lg" 
+                  onClick={scrollToContact} 
+                  className="group w-full sm:w-auto"
+                >
+                  Me contacter
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  onClick={downloadCV} 
+                  className="w-full sm:w-auto bg-transparent"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Télécharger CV
+                </Button>
+              </div>
+            </div>
+
+            {/* Profile Image */}
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-end w-full">
+              <div className="relative group w-full max-w-md">
+                <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 
+                            rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity" 
+                />
+                <div className="relative w-full aspect-square max-w-[24rem] mx-auto rounded-2xl 
+                            overflow-hidden border-4 border-primary/20 shadow-2xl"
+                >
+                  <Image
+                    src="/images/profile.png"
+                    alt="AMOUSSOU Joël Sagbo Côme - Développeur Full-Stack"
+                    fill
+                    className="object-cover object-[center_20%]"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll indicator - hidden on mobile */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
+            <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
+              <div className="w-1 h-3 bg-muted-foreground rounded-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
