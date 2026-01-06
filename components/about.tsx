@@ -11,9 +11,9 @@ export function About() {
 
         <Card className="p-6 sm:p-8 md:p-12">
           <div className="space-y-4 sm:space-y-6 text-base sm:text-lg leading-relaxed">
-            <p>
-              Je suis <span className="text-primary font-semibold">AMOUSSOU Joël Sagbo Côme</span>, développeur web Full-Stack, spécialisé dans la conception de sites web et d'applications modernes, performantes et orientées utilisateur.
-            </p>
+          <p>
+            Moi c'est <span className="text-primary font-semibold">Joël</span>, développeur web Full-Stack, spécialisé dans la conception de sites web et d'applications modernes, performantes et orientées utilisateur.
+          </p>
 
             <p>
               Au cours de mon parcours, j'ai eu l'opportunité de travailler sur plus de{" "}
