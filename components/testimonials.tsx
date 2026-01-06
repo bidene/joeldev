@@ -12,7 +12,7 @@ const testimonials = [
     content:
       "Joël a transformé notre vision en une application web moderne et performante. Son expertise technique et sa capacité d'écoute sont exceptionnelles.",
     rating: 5,
-    image: "/professional-woman-diverse.png",
+    image: "/professional-woman-diverse.png", // Image existante
   },
   {
     name: "Pierre Martin",
@@ -20,7 +20,7 @@ const testimonials = [
     content:
       "Un développeur talentueux qui livre toujours à temps. Notre site e-commerce a vu ses conversions augmenter de 40% grâce à son travail.",
     rating: 5,
-    image: "/professional-man.jpg",
+    image: "/professional-man.jpg", // Image existante
   },
   {
     name: "Aminata Diallo",
@@ -28,7 +28,7 @@ const testimonials = [
     content:
       "Collaboration exceptionnelle du début à la fin. Joël comprend vraiment les besoins business et les traduit en solutions techniques élégantes.",
     rating: 5,
-    image: "/professional-african-woman.png",
+    image: "/professional-african-woman.png", // Image existante
   },
   {
     name: "Sophie Laurent",
@@ -36,7 +36,7 @@ const testimonials = [
     content:
       "Un professionnel à l'écoute et réactif. Les solutions proposées sont toujours adaptées à nos besoins et livrées dans les délais. Je recommande vivement !",
     rating: 5,
-    image: "/professional-woman.jpg",
+    image: "/professional-woman-diverse.png", // Utilisation d'une image similaire
   },
   {
     name: "Thomas Moreau",
@@ -44,7 +44,7 @@ const testimonials = [
     content:
       "Expertise technique remarquable et grande capacité d'adaptation. Joël a su relever des défis complexes avec brio et professionnalisme.",
     rating: 5,
-    image: "/professional-man2.jpg",
+    image: "/professional-man.jpg", // Utilisation de l'image de l'homme professionnel existante
   },
   {
     name: "Camille Leroy",
@@ -52,7 +52,7 @@ const testimonials = [
     content:
       "Une collaboration fluide et efficace. Les livrables étaient toujours conformes aux attentes, avec une attention particulière portée aux détails et aux performances.",
     rating: 5,
-    image: "/professional-woman2.jpg",
+    image: "/professional-african-woman.png", // Utilisation de l'image de la femme africaine professionnelle existante
   },
 ]
 

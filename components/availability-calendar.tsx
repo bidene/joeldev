@@ -65,43 +65,41 @@ export function AvailabilityCalendar() {
                         Discutons de votre projet et voyons comment je peux vous aider.
                       </p>
                     </DialogHeader>
-                    <form onSubmit={async (e) => {
+                    <form onSubmit={(e) => {
                       e.preventDefault();
                       const formData = new FormData(e.currentTarget);
                       const data = Object.fromEntries(formData.entries()) as unknown as BookingFormData;
                       
                       try {
-                        const response = await fetch('/api/contact', {
-                          method: 'POST',
-                          headers: {
-                            'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify(data),
+                        // Construction du message pour WhatsApp
+                        const message = `Nouvelle demande de réservation de ${data.name}%0A%0A` +
+                                      `📅 Date préférée: ${data.preferredDate}%0A` +
+                                      `⏰ Heure préférée: ${data.preferredTime}%0A` +
+                                      `📧 Email: ${data.email}%0A%0A` +
+                                      `📋 Détails du projet:%0A${data.message}`;
+                        
+                        // Numéro de téléphone WhatsApp
+                        const phoneNumber = "22997442048"; // Votre numéro avec l'indicatif pays
+                        
+                        // Redirection vers WhatsApp
+                        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+                        
+                        // Afficher un message de confirmation
+                        toast({
+                          title: "Redirection vers WhatsApp",
+                          description: "Vous allez être redirigé vers WhatsApp pour finaliser votre demande.",
                         });
-
-                        const result = await response.json();
-
-                        if (response.ok) {
-                          toast({
-                            title: "Demande envoyée !",
-                            description: "Je vous recontacterai dans les plus brefs délais pour confirmer le rendez-vous.",
-                          });
-                          
-                          // Optionnel : Rediriger vers WhatsApp
-                          if (result.whatsappUrl) {
-                            window.open(result.whatsappUrl, '_blank');
-                          }
-                          
-                          // Fermer la modale après soumission réussie
+                        
+                        // Fermer la modale après un court délai
+                        setTimeout(() => {
                           document.getElementById('close-dialog')?.click();
-                        } else {
-                          throw new Error(result.message || 'Erreur lors de l\'envoi du formulaire');
-                        }
+                        }, 2000);
+                        
                       } catch (error) {
                         console.error('Erreur:', error);
                         toast({
                           title: "Erreur",
-                          description: error instanceof Error ? error.message : "Une erreur est survenue. Veuillez réessayer plus tard.",
+                          description: "Une erreur est survenue. Veuillez réessayer plus tard ou me contacter directement par téléphone.",
                           variant: "destructive",
                         });
                       }
