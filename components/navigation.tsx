@@ -26,12 +26,12 @@ export function Navigation() {
   }
 
   const navItems = [
-    { label: "Accueil", id: "hero" },
-    { label: "À propos", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Projets", id: "projects" },
-    { label: "Blog", id: "blog" },
-    { label: "Contact", id: "contact" },
+    { label: "Accueil", id: "hero", color: "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" },
+    { label: "À propos", id: "about", color: "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300" },
+    { label: "Services", id: "services", color: "text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300" },
+    { label: "Projets", id: "projects", color: "text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300" },
+    { label: "Blog", id: "blog", color: "text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300" },
+    { label: "Contact", id: "contact", color: "text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300" },
   ]
 
   return (
@@ -55,9 +55,10 @@ export function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-3 py-2 rounded-md text-sm font-medium transition-colors
-                  text-muted-foreground hover:text-foreground hover:bg-accent/10
-                  focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors
+                  ${item.color || 'text-muted-foreground hover:text-foreground hover:bg-accent/10'}
+                  focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                  md:text-base`}
               >
                 {item.label}
               </button>
@@ -76,15 +77,16 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="flex flex-col gap-3 px-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="w-full text-left px-4 py-2 text-sm rounded-md transition-colors
-                    text-muted-foreground hover:text-foreground hover:bg-accent/10
-                    focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className={`w-full text-left px-4 py-3 rounded-lg transition-all
+                    font-medium ${item.color || 'text-foreground'}
+                    hover:bg-accent/20 active:bg-accent/30
+                    focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2`}
                 >
                   {item.label}
                 </button>
