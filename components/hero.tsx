@@ -7,10 +7,11 @@ import { useEffect, useState } from "react"
 
 // Icônes pour les compétences
 const skills = [
-  { name: 'HTML', icon: '/images/html-5.png', color: 'bg-orange-500/20' },
-  { name: 'JavaScript', icon: '/images/javascript.png', color: 'bg-yellow-500/20' },
-  { name: 'Node.js', icon: '/images/nodejs.png', color: 'bg-green-500/20' },
-  { name: 'MySQL', icon: '/images/mysql.png', color: 'bg-blue-500/20' }
+  { name: 'HTML', icon: '/images/html-5.png', color: 'bg-orange-500/20', iconClass: 'w-10 h-10 p-1.5' },
+  { name: 'CSS', icon: '/images/css.png', color: 'bg-blue-600/20', iconClass: 'w-10 h-10 p-1.5' },
+  { name: 'JavaScript', icon: '/images/javascript.png', color: 'bg-yellow-500/20', iconClass: 'w-10 h-10 p-1.5' },
+  { name: 'Node.js', icon: '/images/nodejs.png', color: 'bg-green-500/20', iconClass: 'w-10 h-10 p-1.5' },
+  { name: 'MySQL', icon: '/images/mysql.png', color: 'bg-blue-500/20', iconClass: 'w-10 h-10 p-1.5' }
 ]
 
 export function Hero() {
@@ -120,13 +121,15 @@ export function Hero() {
                         zIndex: 10,
                       }}
                     >
-                      <Image
-                        src={skill.icon}
-                        alt={skill.name}
-                        width={32}
-                        height={32}
-                        className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
-                      />
+                      <div className={skill.iconClass || 'w-10 h-10 p-1.5'}>
+                        <Image 
+                          src={skill.icon} 
+                          alt={skill.name} 
+                          width={40} 
+                          height={40} 
+                          className="w-full h-full object-contain" 
+                        />
+                      </div>
                     </div>
                   );
                 })}
