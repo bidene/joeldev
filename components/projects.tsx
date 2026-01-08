@@ -7,7 +7,7 @@ const projects = [
     {
       title: "Le Rocher Imprimerie",
       description: "Le Rocher Imprimerie est un site vitrine statique développé en HTML, CSS et JavaScript, hébergé sur GitHub Pages. Il présente les services de l'entreprise d'imprimerie de manière claire et professionnelle, avec une navigation fluide, un design responsive et un portfolio mettant en avant ses réalisations.",
-      image: "/le-rocher-imprimerie.png", // remplacer par le screenshot réel du site
+      image: "/logo2.jpeg", // remplacer par le screenshot réel du site
       tags: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
       link: "https://bidene.github.io/le-rocher-imprimerie/",
       github: "#", // si pas de repo public
